@@ -7,27 +7,20 @@ namespace Guia_1___6
     {
         static void Main(string[] args)
         {
-            ConsoleKeyInfo cki;
-
-            bool igualdad = false;
-            // Prevent example from ending if CTL+C is pressed.
-            Console.TreatControlCAsInput = true;
-
-            Console.WriteLine("Apreta Control + Shift + F para salir, sino mientras te quedas acá.");
+            ConsoleKeyInfo tecla;
             do
             {
-                cki = Console.ReadKey();
+                tecla = Console.ReadKey();
                 Console.WriteLine();
-
-                if (((cki.Modifiers & ConsoleModifiers.Control) & (cki.Modifiers & ConsoleModifiers.Alt)) != 0)
+                if ((tecla.Key == ConsoleKey.F) &&
+                    ((tecla.Modifiers & ConsoleModifiers.Shift) != 0) &&
+                        ((tecla.Modifiers & ConsoleModifiers.Control) != 0))
                 {
-                    Console.Write("CTR+SHIFT+");
-                    string cosa = cki.KeyChar.ToString();
-                    igualdad = string.Equals(cosa, "F");
-                }
-                Console.WriteLine("{0} (character '{1}')", cki.Key, cki.KeyChar);
+                    break;
 
-           } while (igualdad == false);
+
+                }
+            } while (true);
         }
     }
 }
